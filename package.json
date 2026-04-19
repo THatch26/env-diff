@@ -1,0 +1,23 @@
+{
+  "name": "env-diff",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/diff.js",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "start": "node bin/env-diff.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "commander": "^14.0.3",
+    "dotenv": "^17.4.2",
+    "vitest": "^4.1.4"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0"
+  }
+}
