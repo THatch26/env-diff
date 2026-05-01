@@ -1,0 +1,26 @@
+{
+  "name": "env-diff",
+  "version": "0.1.0",
+  "description": "A Node.js cli",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "start": "node ./bin/cli.js",
+    "lint": "eslint ."
+  },
+  "bin": {
+    "env-diff": "./bin/cli.js"
+  },
+  "main": "./src/index.js",
+  "dependencies": {
+    "commander": "*",
+    "chalk": "*"
+  },
+  "devDependencies": {
+    "vitest": "*",
+    "eslint": "^9",
+    "@eslint/js": "^9",
+    "globals": "^15"
+  },
+  "license": "MIT"
+}
