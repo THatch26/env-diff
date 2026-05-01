@@ -1,23 +1,31 @@
 {
   "name": "env-diff",
   "version": "1.0.0",
-  "description": "",
+  "description": "Compare two .env files and report missing keys, extra keys, and changed values with colored terminal output",
   "main": "src/diff.js",
   "type": "module",
+  "bin": {
+    "env-diff": "./bin/env-diff.js"
+  },
   "scripts": {
     "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
     "start": "node bin/env-diff.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["env", "dotenv", "diff", "cli", "environment", "comparison"],
+  "author": "THatch26",
+  "license": "MIT",
+  "files": [
+    "bin/",
+    "src/"
+  ],
   "dependencies": {
     "chalk": "^5.6.2",
-    "commander": "^14.0.3",
-    "dotenv": "^17.4.2",
-    "vitest": "^4.1.4"
+    "commander": "^14.0.3"
   },
   "devDependencies": {
+    "vitest": "^3.1.1",
     "@types/node": "^25.6.0"
   }
 }
