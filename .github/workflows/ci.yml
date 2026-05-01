@@ -2,26 +2,36 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [master]
   pull_request:
-    branches: [ main ]
+    branches: [master]
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
 
-    - name: Install dependencies
-      run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Run tests
-      run: npm test
+      - name: Run tests
+        run: npm test
 
-    - name: Build check
-      run: npm run start -- .env .env.example --json || true
+      - name: Verify CLI runs (no args)
+        run: node bin/env-diff.js --help
+
+      - name: Create test env files and verify diff detection
+        run: |
+          echo "KEY1=val1" > .env.a
+          echo "KEY1=changed" > .env.b
+          set +e
+          node bin/env-diff.js .env.a .env.b --json
+          EXIT_CODE=$?
+          if [ $EXIT_CODE -ne 1 ]; then echo "Expected exit code 1, got $EXIT_CODE"; exit 1; fi
+          echo "CLI exit code test passed"
